@@ -1,4 +1,5 @@
 # See-Server-Health
+[TOC]
 ## 專案動機
 在日常網站或伺服器管理中，管理人員不見得能隨時攜帶電腦，而一旦系統出現異常可能就已經錯過第一時間處理的最佳時機！為了解決這個問題，我們建立了一套整合 Telegram Bot 的監控與操作系統，能讓使用者能得到系統資源使用狀況（如 CPU、記憶體），並提供控制指令，也提供遠端控制網頁兩種方案做選擇，協助管理人員隨時掌握服務狀態並立即做出反應。
 另外，也有即時警告，當有新的登入行為，將即時傳送給管理者，
@@ -46,16 +47,28 @@ FIXXME:寫詳細
 ### Telegram 按按鈕指令
 #### 操作指令系列
 - `/op_exec <cmd>` 執行任何 shell 指令(除了 sudo 指令)
-- `/op_stop -p <port>` 關閉指定 port 
+- `/op_stop -p <port>` 關閉指定 port
+- `/more` 開啟瀏覽器的 terminal 以更方便的控制 server (FIXME: 待完成)
 
 #### 資源監控圖表
-- `/mon_cpu_picture ` 用圖表顯示 CPU 情況
-- `/mon_mem_picture ` 用圖表顯示 Memory 情況
+- CPU：
+    - `/mon_cpu_picture ` 用圖表顯示 5 分鐘前到現在的 CPU 情況
+    - `/mon_cpu_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 CPU 情況
+    - `/mon_cpu_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 CPU 情況
+- MEMORY：
+    - `/mon_mem_picture ` 用圖表顯示 5 分鐘前到現在的 Memory 情況
+    - `/mon_mem_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Memory 情況
+    - `/mon_mem_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Memory 情況
+- DISK：
+    - `/mon_disk_picture ` 用圖表顯示 5 分鐘前到現在的 Disk 情況
+    - `/mon_disk_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Disk 情況
+    - `/mon_disk_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Disk 情況
 
 #### 自動監測通報
 - 登入警告
   - 當有人登入 Server (ssh...)，Telegram Bot 將自動傳送告訊
 
+### 未來展望
 
 ### 小紀錄
 - pip install python-telegram-bot requests

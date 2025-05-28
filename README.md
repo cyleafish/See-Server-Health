@@ -36,11 +36,32 @@ BOT_TOKEN=<your_bot_token>
 ALLOWED_USER_IDS=<your_telegram_id>
 chat_id=<your_telegram_id>
 ```
+ℹ️ 如何獲得上述 token 與 id，這邊教你如何新增自己的 Telegram Bot 🏃
+- 打開 Telegram，搜尋 @BotFather
+![image](https://hackmd.io/_uploads/Syc9dXXCyx.png)
+- 傳送指令 /start、然後 /newbot
+- 根據提示輸入：
+    - Bot 名稱（例如：MyMonitorBot）
+    - 使用者名稱（結尾需是 bot，如：my_monitor_bot）
+- 你會拿到一個 Bot Token：
+![image](https://hackmd.io/_uploads/rkJ124KC1x.png)
+- 找到你的 bot 輸入 /start
+![image](https://hackmd.io/_uploads/H1Vg_7XR1e.png)
+- 在瀏覽器輸入
+`https://api.telegram.org/bot<YourBotToken>/getUpdates` 並找出 id
+![image](https://hackmd.io/_uploads/rkFLn4tRJe.png)
+- 把 toker 與 id 輸入
+`https://api.telegram.org/bot<YourBotToken>/sendMessage?chat_id=<ChatID>&text=HelloAlert`
+![image](https://hackmd.io/_uploads/ry0ZG_5C1g.png)
+- 得到通知(確認 Telegram Bot 有正確執行)
+![image](https://hackmd.io/_uploads/H1ib9mmAyg.png)
+
 ### Usage
 1. 下載 repo
 2. 進入資料夾並執行 `./start.sh`
 
 FIXME:寫詳細？
+
 
 ## DEMO
 FIXXME:寫詳細

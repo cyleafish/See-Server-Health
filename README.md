@@ -9,9 +9,9 @@
 - 操作控制：能按指令關閉指定 port 或執行 shell 命令
 - 資源監控：對 CPU 與 Memory 使用率輸出圖表
 - 即時警告：一旦有新的登入行為，即時傳送給管理者
-- FIXME: 異常警告：對比歷史資料，若偵測到異常流量，將會交給 AI 做判斷並給予操作建議
+> FIXME: 異常警告：對比歷史資料，若偵測到異常流量，將會交給 AI 做判斷並給予操作建議
 ## 流程圖
-FIXME
+> FIXME
 ## 專案結構
 `app.py`：Telegram Bot 的主程式，處理指令與回應。
 `monitor/`：包含 `login_alert.py`，用於監控 `/var/log/auth.log`，偵測登入行為並發送警告。
@@ -27,7 +27,7 @@ FIXME
 Docker & Docker Compose
 Python 3.9+
 Telegram Bot Token
-FIXME: 待補
+> FIXME: 待補
 
 ###  Environment
 請在根目錄下新增 .env，內容包括：
@@ -60,17 +60,16 @@ chat_id=<your_telegram_id>
 1. 下載 repo
 2. 進入資料夾並執行 `./start.sh`
 
-FIXME:寫詳細？
-
+> FIXME:寫詳細？
+開啟 Telegram Bot 後輸入 `/start` 就可以輸入指令啦！
 
 ## DEMO
-FIXXME:寫詳細
+> FIXXME:寫詳細
 ### Telegram 按按鈕指令
 #### 操作指令系列
 - `/op_exec <cmd>` 執行任何 shell 指令(除了 sudo 指令)
 - `/op_stop -p <port>` 關閉指定 port
 - `/more` 開啟瀏覽器的 terminal 以更方便的控制 server (FIXME: 待完成)
-
 #### 資源監控圖表
 - CPU：
     - `/mon_cpu_picture ` 用圖表顯示 5 分鐘前到現在的 CPU 情況
@@ -84,7 +83,6 @@ FIXXME:寫詳細
     - `/mon_disk_picture ` 用圖表顯示 5 分鐘前到現在的 Disk 情況
     - `/mon_disk_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Disk 情況
     - `/mon_disk_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Disk 情況
-
 #### 自動監測通報
 - 登入警告
   - 當有人登入 Server (ssh...)，Telegram Bot 將自動傳送告訊

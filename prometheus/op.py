@@ -7,7 +7,7 @@ app = Flask(__name__)
 def exec_cmd():
     data = request.json
     cmd = data.get("cmd", "")
-    
+
     if "/op_stop" in cmd and "-p" in cmd:
         port = cmd.split("-p")[1].strip()
         try:
@@ -19,7 +19,7 @@ def exec_cmd():
                 return f"⚠️ port {port} 無對應程序"
         except:
             return "❌ 無法關閉 port"
-    
+
     elif "/op_exec" in cmd:
         try:
             shell_cmd = cmd.replace("/op_exec", "").strip()
@@ -27,7 +27,7 @@ def exec_cmd():
             return f"✅ 執行結果：\n{output}"
         except subprocess.CalledProcessError as e:
             return f"❌ 錯誤：{e.output.decode()}"
-    
+
     return "未知操作"
 
 app.run(port=8000)

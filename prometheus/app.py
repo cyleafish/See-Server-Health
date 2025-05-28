@@ -64,7 +64,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 # 建立 bot 應用
-app = ApplicationBuilder().token("TOKEN").build()
+app = ApplicationBuilder().token(TOKEN).build()
 # 指令註冊
 app.add_handler(CommandHandler("start", start))
 

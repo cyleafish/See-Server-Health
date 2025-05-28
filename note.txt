@@ -1,0 +1,1 @@
+建立 SSH 登入事件監控規則：sudo auditctl -w /var/log/auth.log -p rwxa -k ssh_login

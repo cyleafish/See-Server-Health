@@ -72,17 +72,18 @@ chat_id=<your_telegram_id>
 - `/more` 開啟瀏覽器的 terminal 以更方便的控制 server (FIXME: 待完成)
 #### 資源監控圖表
 - CPU：
-    - `/mon_cpu_picture ` 用圖表顯示 5 分鐘前到現在的 CPU 情況
-    - `/mon_cpu_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 CPU 情況
-    - `/mon_cpu_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 CPU 情況
+    - `/mon_cpu` 顯示當下的 CPU 使用率 
+    - `/mon_cpu_picture ` 用圖表顯示 5 分鐘前到現在的 CPU 使用率
+    - `/mon_cpu_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 CPU 使用率
+    - `/mon_cpu_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 CPU 使用率
 - MEMORY：
-    - `/mon_mem_picture ` 用圖表顯示 5 分鐘前到現在的 Memory 情況
-    - `/mon_mem_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Memory 情況
-    - `/mon_mem_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Memory 情況
+    - `/mon_mem_picture ` 用圖表顯示 5 分鐘前到現在的 Memory 使用率
+    - `/mon_mem_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Memory 使用率
+    - `/mon_mem_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Memory 使用率
 - DISK：
-    - `/mon_disk_picture ` 用圖表顯示 5 分鐘前到現在的 Disk 情況
-    - `/mon_disk_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Disk 情況
-    - `/mon_disk_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Disk 情況
+    - `/mon_disk_picture ` 用圖表顯示 5 分鐘前到現在的 Disk 使用率
+    - `/mon_disk_picture <參數> ` 用圖表顯示 <?> 分鐘前到現在的 Disk 使用率
+    - `/mon_disk_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 <?> 分鐘前到現在的 Disk 使用率
 #### 自動監測通報
 - 登入警告
   - 當有人登入 Server (ssh...)，Telegram Bot 將自動傳送告訊

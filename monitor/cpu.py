@@ -1,8 +1,21 @@
+# cpu.py
+
 from telegram import Update
-from telegram.ext import CommandHandler, ContextTypes
-import requests, matplotlib.pyplot as plt
+from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
+
+import requests
+import matplotlib.pyplot as plt
 from datetime import datetime, timedelta
 from utils.whitelist import is_user_allowed
+
+#chinese
+import matplotlib.font_manager as fm
+
+# 設定中文字體
+plt.rcParams['font.family'] = 'Noto Sans CJK JP'
+plt.rcParams['axes.unicode_minus'] = False  # 避免負號顯示錯誤
+
+
 
 PROMETHEUS_URL = "http://host.docker.internal:9090"
 
@@ -20,7 +33,25 @@ def parse_cpu_picture_args(args):
         end = center + timedelta(minutes=offset)
     return start, end
 
-async def cpu_picture(update: Update, context: ContextTypes.DEFAULT_TYPE):
+#當下的 cpu usage
+async def mon_cpu(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    query = '100 - (avg by (instance)(rate(node_cpu_seconds_total{mode="idle"}[1m])) * 100)'
+    response = requests.get(
+        f"{PROMETHEUS_URL}/api/v1/query",
+        params={"query": query}
+    )
+
+    result = response.json().get('data', {}).get('result', [])
+    if not result:
+        return "⚠️ 找不到即時 CPU 使用資料"
+
+    # 可能有多個 instance，這邊只取第一個
+    value = float(result[0]['value'][1])
+    timestamp = datetime.fromtimestamp(float(result[0]['value'][0]))
+    await update.message.reply_text(f"🖥️ 即時 CPU 使用率：{value:.2f}%（時間：{timestamp.strftime('%H:%M:%S')}）")
+
+
+async def mon_cpu_picture(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_user_allowed(update.effective_user.id):
         await update.message.reply_text("🚫 你沒有權限使用此功能")
         return
@@ -53,4 +84,4 @@ async def cpu_picture(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(f"❌ 發生錯誤：{e}")
 
 def cpu_picture_handler():
-    return CommandHandler("cpu_picture", cpu_picture)
+    return CommandHandler("mon_cpu_picture", mon_cpu_picture)

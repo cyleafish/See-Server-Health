@@ -6,6 +6,7 @@ import requests
 #from op import op_exec
 from cpu import mon_cpu_picture, mon_cpu
 from mem import mon_mem_picture, mon_mem
+from disk import mon_disk_picture, mon_disk
 OPERATOR_URL = "http://localhost:8000/exec"  # 你本機跑的控制 API
 
 import os
@@ -76,5 +77,8 @@ app.add_handler(CommandHandler("mon_cpu_picture", mon_cpu_picture))
 
 app.add_handler(CommandHandler("mon_mem", mon_mem))
 app.add_handler(CommandHandler("mon_mem_picture", mon_mem_picture))
+
+app.add_handler(CommandHandler("mon_disk", mon_disk))
+app.add_handler(CommandHandler("mon_disk_picture", mon_disk_picture))
 
 app.run_polling()

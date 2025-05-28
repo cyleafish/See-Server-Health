@@ -8,6 +8,15 @@ from cpu import mon_cpu_picture, mon_cpu
 from mem import mon_mem_picture, mon_mem
 OPERATOR_URL = "http://localhost:8000/exec"  # 你本機跑的控制 API
 
+import os
+from dotenv import load_dotenv
+
+# 載入 .env 檔案
+load_dotenv()
+
+# 讀取 token
+TOKEN = os.getenv("your_bot_token")
+
 #按鈕
 custom_keyboard = [
     ["/op_exec ls", "/op_stop -p 80"],
@@ -55,7 +64,7 @@ async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     )
 
 # 建立 bot 應用
-app = ApplicationBuilder().token("yourtoken").build()
+app = ApplicationBuilder().token("TOKEN").build()
 # 指令註冊
 app.add_handler(CommandHandler("start", start))
 

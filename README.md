@@ -11,6 +11,15 @@
 - FIXME: 異常警告：對比歷史資料，若偵測到異常流量，將會交給 AI 做判斷並給予操作建議
 ## 流程圖
 FIXME
+## 專案結構
+`app.py`：Telegram Bot 的主程式，處理指令與回應。
+`monitor/`：包含 `login_alert.py`，用於監控 `/var/log/auth.log`，偵測登入行為並發送警告。
+`control/`：包含 `op.py`，提供遠端操作功能。
+`prometheus/`：Prometheus 的設定檔，用於收集 Server 指標。
+`utils/`：包含 `whitelist.py`，用於管理能使用此 Bot 的使用者清單。
+`docker-compose.yml`：定義了 Telegrame Bot 服務的容器設定，方便部署。
+`requirements.txt`：列出專案所需的 Python 套件。
+`start.sh`：啟動腳本，用於一次自動開啟各個服務。
 
 ## 使用方法
 ### Prerequisites

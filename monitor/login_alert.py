@@ -22,6 +22,8 @@ with open("/var/log/auth.log", "r") as f:
     f.seek(0, 2)  # 移到檔案結尾（追蹤模式）
     while True:
         line = f.readline()
-        if any(kw in line for kw in ["Accepted password", "session opened", "New session", "sudo: pam_unix"]):
+        if "cron:session" in line:
+            continue 
+        elif any(kw in line for kw in ["Accepted password", "session opened", "New session"]):
             send_tg_msg(f"⚠️ 有人登入：\n{line.strip()}")
         time.sleep(1)

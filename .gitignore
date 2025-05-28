@@ -1,1 +1,5 @@
 .env
+cpu.png
+mem_usage.png
+note.txt
+**/__pycache__/

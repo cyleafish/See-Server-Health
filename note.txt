@@ -2,3 +2,22 @@ sudo apt install auditd
 建立 SSH 登入事件監控規則：sudo auditctl -w /var/log/auth.log -p rwxa -k ssh_login
 
 sudo apt install fonts-noto-cjk
+
+ssh kick:
+    1. who 會顯示：me   pts/2   2025-05-28 18:55 (10.107.13.49)
+    2. 找出該連線的 pts/x 對應的進程
+        ps aux | grep pts/2: me 38385 ... sshd: me@pts/2
+
+    3. sudo kill -9 <PID>
+
+ssh kick <ip>:
+    - who 會顯示：me   pts/2   2025-05-28 18:55 (10.107.13.49)
+    
+    elif "/op_kick" in cmd and "-ip" in cmd:
+    ip = cmd.split("-ip")[1].strip()
+    try:
+        subprocess.run(f"iptables -A INPUT -s {ip} -j DROP", shell=True)
+        return jsonify(result=f"🚫 已封鎖 IP：{ip}")
+    except:
+        return jsonify(result="❌ 封鎖失敗")
+

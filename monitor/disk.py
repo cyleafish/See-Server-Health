@@ -14,7 +14,7 @@ import matplotlib.font_manager as fm
 plt.rcParams['font.family'] = 'Noto Sans CJK JP'
 plt.rcParams['axes.unicode_minus'] = False  # 避免負號顯示錯誤
 
-PROMETHEUS_URL = 'http://localhost:9090'
+PROMETHEUS_URL = 'http://host.docker.internal:9090'
 
 def parse_disk_picture_args(args):
     now = datetime.now()
@@ -96,8 +96,8 @@ async def mon_disk_picture(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 繪圖
     plt.figure(figsize=(10, 4))
     plt.plot(timestamps, values, label='Disk Usage %', color='purple', linewidth=3, linestyle='--')
-    plt.title('Disk 使用率 ')
-    plt.xlabel('時間')
+    plt.title('Disk Usage')
+    plt.xlabel('time')
     plt.ylabel('%')
     plt.ylim(0, 100)
     plt.grid(True)

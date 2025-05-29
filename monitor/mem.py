@@ -96,8 +96,8 @@ async def mon_mem_picture(update: Update, context: ContextTypes.DEFAULT_TYPE):
     # 繪圖
     plt.figure(figsize=(10, 4))
     plt.plot(timestamps, values, label='Memory Usage %', color='blue', linewidth=3, linestyle='--')
-    plt.title('Memory 使用率 ')
-    plt.xlabel('時間')
+    plt.title('Memory Usage')
+    plt.xlabel('time')
     plt.ylabel('%')
     plt.ylim(0, 100)
     plt.grid(True)

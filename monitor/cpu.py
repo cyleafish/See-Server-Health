@@ -22,15 +22,26 @@ PROMETHEUS_URL = "http://host.docker.internal:9090"
 
 def parse_cpu_picture_args(args):
     now = datetime.now()
+
     if not args:
+        # 沒有參數，預設抓「現在 - 5分鐘」到「現在」
         end = now
         start = now - timedelta(minutes=5)
-    else:
+    elif len(args) == 1:
+        # 一個參數：/cpu_picture 40
+        end = now
+        start = now - timedelta(minutes=int(args[0]))
+    elif len(args) == 2:
+        # 兩個參數：/cpu_picture 1940 10
         center = datetime.strptime(args[0], "%H%M").replace(
-            year=now.year, month=now.month, day=now.day)
-        offset = int(args[1]) if len(args) > 1 else 5
+            year=now.year, month=now.month, day=now.day
+        )
+        offset = int(args[1])
         start = center - timedelta(minutes=offset)
         end = center + timedelta(minutes=offset)
+    else:
+        raise ValueError("參數格式錯誤")
+
     return start, end
 
 #當下的 cpu usage
@@ -72,8 +83,8 @@ async def mon_cpu_picture(update: Update, context: ContextTypes.DEFAULT_TYPE):
         values = [float(x[1]) for x in result[0]['values']]
         plt.figure(figsize=(10, 4))
         plt.plot(timestamps, values, label='CPU Usage %', color='green')
-        plt.title('CPU 使用率')
-        plt.xlabel('時間')
+        plt.title('CPU Usage')
+        plt.xlabel('time')
         plt.ylabel('%')
         plt.grid(True)
         plt.tight_layout()

@@ -13,7 +13,8 @@ http://<VM_IP>:8090
   | sudo tee /etc/apt/sources.list.d/ngrok.list \  
   && sudo apt update \  
   && sudo apt install ngrok`   
-`ngrok config add-authtoken <token>`(這段token要去ngrok註冊拿)  
+`ngrok config add-authtoken <token>`
+(這段token要去ngrok註冊在 https://dashboard.ngrok.com/get-started/your-authtoken 拿)  
 `ngrok http 8090`(不能關)  
 開新視窗輸入  
 `sudo ttyd -p 8090 login`  

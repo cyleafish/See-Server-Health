@@ -145,10 +145,12 @@ sudo tee /etc/apt/sources.list.d/ngrok.list \
 ![image](https://hackmd.io/_uploads/H1GY2FSGle.png)
 
 ## DEMO 
+![image](https://hackmd.io/_uploads/rJVgq2SMgl.png )
+
 ### Telegram 按按鈕指令
 #### 操作指令系列
 - `/op_exec <cmd>` 執行任何 shell 指令(除了 sudo 指令)
-    ![image](https://hackmd.io/_uploads/BJOr7kSzll.png)
+    - ![image](https://hackmd.io/_uploads/BJOr7kSzll.png)
     - 在訊息框輸入`/op_exec `後面接上要打的指令就會回傳結果 
 - `/op_port` 查看目前有開啟的 port
     - ![image](https://hackmd.io/_uploads/BkOq71HGxx.png)
@@ -178,12 +180,12 @@ sudo tee /etc/apt/sources.list.d/ngrok.list \
     - `/mon_disk_picture ` 用圖表顯示 5 分鐘前到現在的 Disk 使用率
     - `/mon_disk_picture <參數> ` 用圖表顯示 ? 分鐘前到現在的 Disk 使用率
     - `/mon_disk_picture <時間> <參數> ` 用圖表顯示 <時間> 前後 ? 分鐘前到現在的 Disk 使用率
-    ![image](https://hackmd.io/_uploads/SyAzg1SGgx.png)
+    - ![image](https://hackmd.io/_uploads/SyAzg1SGgx.png)
 
 #### 自動監測通報
 - 登入警告
   - 當有人登入 Server (ssh...)，Telegram Bot 將自動傳送警告登入的訊息
-     ![image](https://hackmd.io/_uploads/BJsNNyBfgg.png)
+     - ![image](https://hackmd.io/_uploads/BJsNNyBfgg.png)
      
 
 ## 未來展望

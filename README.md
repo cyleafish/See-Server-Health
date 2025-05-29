@@ -200,7 +200,7 @@ sudo tee /etc/apt/sources.list.d/ngrok.list \
 ## 分工表
 | 姓名 | 工作 |
 | -------- | -------- | 
-| 葉芷妤     | Telegram bot、Docker 架設、報告、ReadME    |
+| 葉芷妤     | Telegram bot、Docker 架設、及時警告、報告、ReadME    |
 | 賴詩璿     | 網頁 Terminal(ngrok、ttyd)、報告、ReadME     |
 | 陳子晴     | Telegram bot、Prometheous、報告、ReadME     |
 
